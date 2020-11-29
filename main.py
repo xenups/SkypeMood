@@ -1,10 +1,10 @@
 from getpass import getpass
-from getpass import getuser
+import atexit
 from time import sleep
 
 from skpy import Skype, SkypeAuthException
 
-from SwSpotify import spotify
+from SwSpotify import spotify, SpotifyNotRunning
 
 
 def login_skype():
@@ -19,12 +19,25 @@ def login_skype():
 
 def get_spotify_mood():
     try:
-        return spotify.song() + " from " + spotify.artist()
-    except Exception as e:
+        title, artist = spotify.current()
+    except SpotifyNotRunning as e:
         print(e)
+    else:
+        return title + " from " + artist
 
 
 if __name__ == '__main__':
     while True:
-        sk = login_skype().setMood("(headphones) " + get_spotify_mood())
+        login_skype().setMood("(headphones) " + get_spotify_mood())
         sleep(60)
+
+
+def exit_handler():
+    print("goodbye")
+    try:
+        login_skype().setMood(" ")
+    except Exception as e:
+        print(e)
+
+
+atexit.register(exit_handler)

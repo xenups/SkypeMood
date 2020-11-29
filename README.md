@@ -1,6 +1,14 @@
 # SkypeMood
-it shows current music from spotify on skype mood
-to run this package you need to:
+SkypeMood shows current playing music from spotify in skype mood.
+
+to run in windows download exe from release and run it or
+clone it 
+```
+pip  install -r requirements.txt
+python main.py 
+```
+
+to run this package in Linux need to clone it:
 
 ```git clone https://github.com/xenups/SkypeMood.git```
 

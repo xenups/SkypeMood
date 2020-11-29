@@ -33,9 +33,13 @@ def get_spotify_mood():
 
 
 if __name__ == '__main__':
+    last_track = " "
     while True:
-        login_skype().setMood(get_random_smiley() + " " + get_spotify_mood())
-        sleep(60)
+        if last_track != get_spotify_mood():
+            last_track = get_spotify_mood()
+            login_skype().setMood(get_random_smiley() + " " + last_track)
+            print("Track changed")
+        sleep(4)
 
 
 def exit_handler():

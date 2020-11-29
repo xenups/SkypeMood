@@ -1,3 +1,4 @@
+import random
 from getpass import getpass
 import atexit
 from time import sleep
@@ -5,6 +6,11 @@ from time import sleep
 from skpy import Skype, SkypeAuthException
 
 from SwSpotify import spotify, SpotifyNotRunning
+
+
+def get_random_smiley():
+    smileys = ["(dotdmale)", "(headphones)", "(malthe)", "(stormtrooper)", "(steveaoki)"]
+    return random.choice(smileys)
 
 
 def login_skype():
@@ -28,7 +34,7 @@ def get_spotify_mood():
 
 if __name__ == '__main__':
     while True:
-        login_skype().setMood("(headphones) " + get_spotify_mood())
+        login_skype().setMood(get_random_smiley() + " " + get_spotify_mood())
         sleep(60)
 
 

@@ -26,5 +26,5 @@ def get_spotify_mood():
 
 if __name__ == '__main__':
     while True:
-        sk = login_skype().setMood(get_spotify_mood())
+        sk = login_skype().setMood("(headphones) " + get_spotify_mood())
         sleep(60)

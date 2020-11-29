@@ -24,21 +24,23 @@ def login_skype():
 
 
 def get_spotify_mood():
+    title = artist = ""
     try:
         title, artist = spotify.current()
     except SpotifyNotRunning as e:
         print(e)
+        return title + " from " + artist
     else:
         return title + " from " + artist
 
 
 if __name__ == '__main__':
-    last_track = " "
+    last_track = ""
     while True:
         if last_track != get_spotify_mood():
             last_track = get_spotify_mood()
             login_skype().setMood(get_random_smiley() + " " + last_track)
-            print("Track changed")
+            print(last_track)
         sleep(4)
 
 

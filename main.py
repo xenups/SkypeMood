@@ -24,12 +24,11 @@ def login_skype():
 
 
 def get_spotify_mood():
-    title = artist = ""
     try:
         title, artist = spotify.current()
     except SpotifyNotRunning as e:
         print(e)
-        return title + " from " + artist
+        return " "
     else:
         return title + " from " + artist
 

@@ -9,7 +9,7 @@ from SwSpotify import spotify, SpotifyNotRunning
 
 
 def get_random_smiley():
-    smileys = ["(dotdmale)", "(headphones)", "(malthe)", "(stormtrooper)", "(steveaoki)"]
+    smileys = ["(dotdmale)", "(headphones)", "(malthe)", "(stormtrooper)", "(steveaoki)", "(panda)", "(rockchick)"]
     return random.choice(smileys)
 
 

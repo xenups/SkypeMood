@@ -1,11 +1,24 @@
+import http
 import random
 from getpass import getpass
 import atexit
 from time import sleep
 
+import requests
 from skpy import Skype, SkypeAuthException
 
 from SwSpotify import spotify, SpotifyNotRunning
+
+
+def is_internet_connected():
+    url = "http://www.google.com"
+    timeout = 5
+    try:
+        request = requests.get(url, timeout=timeout)
+        return True
+    except (requests.ConnectionError, requests.Timeout) as exception:
+        print("seems connection dropped")
+        return False
 
 
 def get_random_smiley():
@@ -38,7 +51,10 @@ if __name__ == '__main__':
     while True:
         if last_track != get_spotify_mood():
             last_track = get_spotify_mood()
-            login_skype().setMood(get_random_smiley() + " " + last_track)
+            if is_internet_connected():
+                login_skype().setMood(get_random_smiley() + " " + last_track)
+            else:
+                last_track = " "
             print(last_track)
         sleep(4)
 

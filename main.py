@@ -17,7 +17,7 @@ def is_internet_connected():
         request = requests.get(url, timeout=timeout)
         return True
     except (requests.ConnectionError, requests.Timeout) as exception:
-        print("seems connection dropped")
+        print("Seems connection has been dropped")
         return False
 
 
